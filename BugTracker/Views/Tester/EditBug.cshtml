@@ -1,0 +1,62 @@
+﻿@model List<BugTracker.Models.Bug>
+
+@{
+    ViewBag.Title = "EditBug";
+}
+
+<h2>Edit Bug</h2>
+@using (Html.BeginForm("DoEditBug", "Tester", FormMethod.Post))
+{
+    <label for="BugId">Bug: </label>
+    <select name="BugId" id="bugId">
+        @foreach (var bug in Model)
+        {
+            <option value="@bug.BugId">@bug.BugId</option>
+        }
+    </select>
+    <br />
+    
+    <label for="Description">Description: </label>
+    <textarea name="Description" id="description"></textarea>
+    <br />
+    
+    <label for="Priority">Priority: </label>
+    <select name="Priority" id="priority">
+        <option value="0">Critical</option>
+        <option value="1">High</option>
+        <option value="2">Normal</option>
+        <option value="3">Low</option>
+    </select>
+    <br />
+    
+    <label for="Status">Status: </label>
+    <select name="Status" id="status">
+        <option value="0">New</option>
+        <option value="1">In Progress</option>
+        <option value="2">Fixed</option>
+        <option value="3">Closed</option>
+    </select>
+    <br />
+    
+    <input type="submit" value="Submit" />
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        $('#bugId').on('change', function (e) {
+            e.preventDefault();
+
+            var bugId = $('#bugId').val();
+            $.ajax({
+                url: "../../Tester/Bugs/" + bugId,
+                success: function (result) {
+                    $('#description').val(result.Description);
+                    $('#priority').val(result.Priority);
+                    $('#status').val(result.Status);
+                }
+            });
+        });
+    }); 
+</script>

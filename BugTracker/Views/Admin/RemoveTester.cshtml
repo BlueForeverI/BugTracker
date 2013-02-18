@@ -1,0 +1,19 @@
+﻿@model List<BugTracker.Models.Tester>
+
+@{
+    ViewBag.Title = "RemoveTester";
+}
+
+<h2>Remove Tester</h2>
+@using (Html.BeginForm("DoRemoveTester", "Admin", FormMethod.Post))
+{
+    <select name="TesterId">
+        @foreach (var tester in Model)
+        {
+            <option value="@tester.TesterId">@tester.Username</option>
+        }
+    </select>
+    <br />
+    
+    <input type="submit" value="Remove" />
+}

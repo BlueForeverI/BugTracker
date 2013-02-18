@@ -1,0 +1,60 @@
+﻿@model List<BugTracker.Models.Tester>
+@{
+    ViewBag.Title = "EditTester";
+}
+
+<h2>Edit Tester</h2>
+@using (Html.BeginForm("DoEditTester", "Admin", FormMethod.Post))
+{
+    <select name="TesterId" id="testerId">
+        @foreach (var tester in Model)
+        {
+            <option value="@tester.TesterId">@tester.Username</option>
+        }
+    </select>
+    <br />
+    
+    <label for="Password">Password:</label>
+    <input type="password" name="Password" id="password" />
+    <br />
+    
+    <label for="FirstName">First Name: </label>
+    <input type="text" name="FirstName" id="firstName" />
+    <br />
+    
+    <label for="LastName">Last Name: </label>
+    <input type="text" name="LastName" id="lastName" />
+    <br />
+    
+    <label for="Email">Email: </label>
+    <input type="email" name="Email" id="email" />
+    <br />
+    
+    <label for="Telephone">Telephone: </label>
+    <input type="tel" name="Telephone" id="telephone" />
+    <br />
+    
+    <input type="submit" value="Submit" />
+}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        
+        $('#testerId').on('change', function (e) {
+            e.preventDefault();
+
+            var testerId = $('#testerId').val();
+            $.ajax({
+                url: "../../Admin/Testers/" + testerId,
+                success: function (result) {
+                    $('#firstName').val(result.FirstName);
+                    $('#lastName').val(result.LastName);
+                    $('#email').val(result.Email);
+                    $('#telephone').val(result.Telephone);
+                }
+            });
+        });
+    }); 
+</script>
+

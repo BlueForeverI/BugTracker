@@ -1,0 +1,19 @@
+﻿@model List<BugTracker.Models.Project>
+
+@{
+    ViewBag.Title = "RemoveProject";
+}
+
+<h2>Remove Project</h2>
+@using (Html.BeginForm("DoRemoveProject", "Admin", FormMethod.Post))
+{
+    <select name="ProjectId" id="projectId">
+        @foreach (var project in Model)
+        {
+            <option value="@project.ProjectId">@project.Name</option>
+        }
+    </select>
+    <br />
+    
+    <input type="submit" value="Remove" />
+}

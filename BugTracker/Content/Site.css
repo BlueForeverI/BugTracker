@@ -1,0 +1,15 @@
+﻿/*.k-widget.k-grid {
+    margin-top: 20px;
+}
+
+.k-grid-content table  {
+    border-collapse: collapse;
+}
+
+.k-grid-content table td {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}*/
+#bugWrapper {
+    width: 500px;
+}

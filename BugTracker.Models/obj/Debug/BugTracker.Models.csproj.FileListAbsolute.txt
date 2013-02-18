@@ -1,0 +1,8 @@
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\obj\Debug\BugTracker.Models.csprojResolveAssemblyReference.cache
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\bin\Debug\BugTracker.Models.dll.config
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\bin\Debug\BugTracker.Models.dll
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\bin\Debug\BugTracker.Models.pdb
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\bin\Debug\EntityFramework.dll
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\bin\Debug\EntityFramework.xml
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\obj\Debug\BugTracker.Models.dll
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Models\obj\Debug\BugTracker.Models.pdb

@@ -1,0 +1,19 @@
+﻿@model List<BugTracker.Models.Bug>
+
+@{
+    ViewBag.Title = "DeleteBug";
+}
+
+<h2>Delete Bug</h2>
+@using (Html.BeginForm("DoDeleteBug", "Tester", FormMethod.Post))
+{
+    <select name="BugId">
+        @foreach (var bug in Model)
+        {
+            <option value="@bug.BugId">@bug.BugId</option>
+        }
+    </select>
+    <br />
+    
+    <input type="submit" value="Delete" />
+}

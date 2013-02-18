@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "AddTester";
+}
+
+<h2>AddTester</h2>
+@using (Html.BeginForm("DoAddTester", "Admin", FormMethod.Post))
+{
+    <label for="Username">Username: </label>
+    @Html.TextBox("Username");<br />
+    
+    <label for="Password">Password: </label>
+    @Html.Password("Password");<br />
+    
+    <label for="FirstName">First Name: </label>
+    @Html.TextBox("FirstName");<br />
+    
+    <label for="LastName">Last Name: </label>
+    @Html.TextBox("LastName");<br />
+    
+    <label for="Email">Email: </label>
+    @Html.TextBox("Email");<br />
+    
+    <label for="Telephone">Telephone</label>
+    @Html.TextBox("Telephone");<br />
+    
+    <input type="submit" value="Submit" />
+}

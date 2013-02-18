@@ -1,0 +1,65 @@
+﻿@model List<BugTracker.Models.Project>
+@using Kendo.Mvc.UI;
+
+@{
+    ViewBag.Title = "ViewBugs";
+}
+
+<h2>View Bugs by Project</h2>
+<select name="ProjectId" id="projectId">
+    @foreach (var project in Model)
+    {
+        <option value="@project.ProjectId">@project.Name</option>
+    }
+</select>
+<div id="grid">
+</div>
+
+<script>
+    $(document).ready(function () {
+        
+        $('#projectId').on('change', function (e) {
+            e.preventDefault();
+           
+            var projectId = $('#projectId').val();
+            $.ajax({
+                url: "../../Tester/GetBugs/" + projectId,
+                success: function (result) {
+                    console.log(result);
+                    $("#grid").kendoGrid({
+                        dataSource: {
+                            data: result,
+                            pageSize: 20
+                        },
+                        groupable: true,
+                        sortable: true,
+                        pageable: {
+                            refresh: true,
+                            pageSizes: true
+                        },
+                        columns: [{
+                            field: "Description",
+                            width: 90,
+                            title: "Description"
+                        }, {
+                            field: "Owner",
+                            width: 50,
+                            title: "Owner"
+                        },
+                        {
+                            field: "Priority",
+                            width: 50,
+                            title: "Priority"
+                        },
+                        {
+                            width: 30,
+                            field: "DateFound",
+                            title: "Date Found",
+                        }
+                        ]
+                    });
+                }
+            });
+        });
+    }); 
+</script>

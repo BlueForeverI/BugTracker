@@ -1,0 +1,33 @@
+﻿@model List<BugTracker.Models.Project>
+
+@{
+    ViewBag.Title = "AddBug";
+}
+
+<h2>Add Bug</h2>
+@using (Html.BeginForm("DoAddBug", "Tester", FormMethod.Post))
+{
+    <label for="Description">Description: </label>
+    @Html.TextArea("Description");
+    <br />
+    
+    <label for="Priority">Priority: </label>
+    <select name="Priority">
+        <option value="Crtical">Critical</option>
+        <option value="High">High</option>
+        <option value="Normal">Normal</option>
+        <option value="Low">Low</option>
+    </select>
+    <br />
+    
+    <label for="ProjectId">Project: </label>
+    <select name="ProjectId">
+        @foreach (var project in Model)
+        {
+            <option value="@project.ProjectId">@project.Name</option>
+        }
+    </select>
+    <br />
+    
+    <input type="submit" value="Submit" />
+}

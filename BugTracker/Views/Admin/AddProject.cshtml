@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "AddProject";
+}
+
+<h2>Add Project</h2>
+@using (Html.BeginForm("DoAddProject", "Admin", FormMethod.Post))
+{
+    <label for="Name">Name: </label>
+    @Html.TextBox("Name");
+    <br />
+    
+    <label for="Description">Description: </label>
+    @Html.TextArea("Description");
+    <br />
+    
+    <input type="submit" value="Submit" />
+}

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/kendo/kendo.common.min.css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <script src="@Url.Content("~/Scripts/kendo/jquery.min.js")"></script> 
+        <script src="@Url.Content("~/Scripts/kendo/kendo.web.min.js")"></script> 
+        <script src="@Url.Content("~/Scripts/kendo/kendo.aspnetmvc.min.js")"></script> 
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <h1>BugTracker</h1>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                @if (WebMatrix.WebData.WebSecurity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>   
+                    <li>@Html.ActionLink("References", "Index", "References")</li>
+                }
+                @if(System.Web.Security.Roles.IsUserInRole("Admin"))
+                {
+                    <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Manage Bugs", "Index", "Tester")</li>
+                }
+            </ul>
+        </nav>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - BugTracker</p>
+                </div>
+            </div>
+        </footer>
+
+@*        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)*@
+    </body>
+</html>

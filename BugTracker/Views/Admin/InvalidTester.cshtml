@@ -1,0 +1,14 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "InvalidTester";
+}
+
+<h2>Invalid tester!</h2>
+<p>The following errors occured while entering tester information:</p>
+<ul>
+    @foreach (var error in Model)
+    {
+        <li>@error</li>
+    }
+</ul>

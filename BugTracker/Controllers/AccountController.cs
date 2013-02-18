@@ -28,9 +28,15 @@ namespace BugTracker.Controllers
 
         public ActionResult DoLogin(string Username, string Password)
         {
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password)
+                || string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                return View("Login");
+            }
+
             if (WebSecurity.Login(Username, Password))
             {
-                return View("LoginSuccess");
+                return Redirect("../");
             }
 
             return View("Login");

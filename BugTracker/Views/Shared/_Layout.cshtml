@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - BugTracker</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
 
@@ -20,6 +20,10 @@
                 <h1>BugTracker</h1>
             </div>
         </header>
+        @if (WebSecurity.IsAuthenticated)
+        {
+            <p>Welcome, <b>@WebSecurity.CurrentUserName</b></p>
+        }
         <nav>
             <ul>
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -28,14 +32,15 @@
                 {
                     <li>@Html.ActionLink("Logout", "Logout", "Account")</li>   
                     <li>@Html.ActionLink("References", "Index", "References")</li>
-                }
-                @if(System.Web.Security.Roles.IsUserInRole("Admin"))
-                {
-                    <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("Manage Bugs", "Index", "Tester")</li>
+                    
+                    if(System.Web.Security.Roles.IsUserInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Manage Bugs", "Index", "Tester")</li>
+                    }
                 }
             </ul>
         </nav>

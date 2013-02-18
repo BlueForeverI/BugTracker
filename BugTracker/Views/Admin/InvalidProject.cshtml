@@ -1,0 +1,14 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "InvalidProject";
+}
+
+<h2>Invalid Project!</h2>
+<p>The following errors occured while entering project information:</p>
+<ul>
+    @foreach (var error in Model)
+    {
+        <li>@error</li>
+    }
+</ul>

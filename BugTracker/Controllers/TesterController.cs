@@ -72,6 +72,12 @@ namespace BugTracker.Controllers
         [Authorize]
         public ActionResult DoAddBug(Bug bug)
         {
+            var errors = GetBugValidationErrors(bug);
+            if (errors.Count > 0)
+            {
+                return View("InvalidBug", errors);
+            }
+
             bug.DateFound = DateTime.Now;
             bug.Status = BugStatus.New;
             bug.TesterId = WebSecurity.CurrentUserId;
@@ -118,6 +124,12 @@ namespace BugTracker.Controllers
         [Authorize]
         public ActionResult DoEditBug(Bug bug)
         {
+            var errors = GetBugValidationErrors(bug);
+            if (errors.Count > 0)
+            {
+                return View("InvalidBug", errors);
+            }
+
             var entity = context.Bugs
                 .Where(b => b.BugId == bug.BugId).FirstOrDefault();
 
@@ -161,6 +173,18 @@ namespace BugTracker.Controllers
             context.SaveChanges();
 
             return View("BugDeleted");
+        }
+
+        private List<string> GetBugValidationErrors(Bug bug)
+        {
+            List<string> errors = new List<string>();
+
+            if (string.IsNullOrEmpty(bug.Description) || string.IsNullOrWhiteSpace(bug.Description))
+            {
+                errors.Add("The description should not be empty");
+            }
+
+            return errors;
         }
 
     }

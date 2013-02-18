@@ -1,0 +1,25 @@
+﻿@model List<BugTracker.Views.BugView>
+
+@using Kendo.Mvc.UI;
+@{
+    ViewBag.Title = "ShowBugs";
+}
+
+<h2>Show Bugs</h2>
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(b => b.Description);
+        columns.Bound(b => b.Priority);
+        columns.Bound(b => b.Owner);
+        columns.Bound(b => b.Project);
+        columns.Bound(b => b.Status);
+    })
+    .Groupable()
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .DataSource(ds => ds
+        .Ajax()
+        .Read(read => read.Action("Bugs_Read", "References"))))

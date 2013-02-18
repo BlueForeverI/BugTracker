@@ -1,7 +1,26 @@
 ﻿@model List<BugTracker.Views.TesterView>
 
+@using Kendo.Mvc.UI;
 @{
     ViewBag.Title = "ShowTesters";
 }
 
 <h2>Show Testers</h2>
+@(Html.Kendo().Grid(Model)
+    .Name("Grid")
+    .Columns(columns =>
+    {
+        columns.Bound(t => t.Username);
+        columns.Bound(t => t.ProjectCount);
+        columns.Bound(t => t.BugCount);
+        columns.Bound(t => t.LastActionDate);
+        columns.Bound(t => t.LastAction);
+    })
+    .Groupable()
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .DataSource(ds => ds
+        .Ajax()
+        .Read(read => read.Action("Testers_Read", "References"))))
+

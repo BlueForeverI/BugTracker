@@ -2,7 +2,7 @@
 @using Kendo.Mvc.UI;
 
 @{
-    ViewBag.Title = "ViewBugs";
+    ViewBag.Title = "ShowBygsByProject";
 }
 
 <h2>View Bugs by Project</h2>
@@ -23,13 +23,13 @@
            
             var projectId = $('#projectId').val();
             $.ajax({
-                url: "../../Tester/GetBugs/" + projectId,
+                url: "../../References/GetBugsByProject/" + projectId,
                 success: function (result) {
                     
                     $("#grid").kendoGrid({
                         dataSource: {
                             data: result,
-                            pageSize: 20
+                            pageSize: 15
                         },
                         groupable: true,
                         sortable: true,
@@ -41,20 +41,26 @@
                             field: "Description",
                             width: 90,
                             title: "Description"
-                        }, {
+                        },
+                        {
+                            field: "Priority",
+                            width: 30,
+                            title: "Priority"
+                        },
+                        {
                             field: "Owner",
                             width: 50,
                             title: "Owner"
                         },
                         {
-                            field: "Priority",
-                            width: 50,
-                            title: "Priority"
+                            field: "Project",
+                            width: 90,
+                            title: "Project"
                         },
                         {
+                            field: "Status",
                             width: 30,
-                            field: "DateFound",
-                            title: "Date Found",
+                            title: "Status"
                         }
                         ]
                     });

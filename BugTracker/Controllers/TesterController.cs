@@ -35,7 +35,7 @@ namespace BugTracker.Controllers
         public ActionResult GetBugs(int id)
         {
             var bugs = (from b in context.Bugs
-                        join t in context.Testers on b.OwnerId equals t.TesterId
+                        join t in context.Testers on b.TesterId equals t.TesterId
                         join p in context.Projects on b.ProjectId equals p.ProjectId
                         where b.ProjectId == id
                         select new
@@ -74,7 +74,7 @@ namespace BugTracker.Controllers
         {
             bug.DateFound = DateTime.Now;
             bug.Status = BugStatus.New;
-            bug.OwnerId = WebSecurity.CurrentUserId;
+            bug.TesterId = WebSecurity.CurrentUserId;
 
             context.Bugs.Add(bug);
             var tester = context.Testers
@@ -83,6 +83,15 @@ namespace BugTracker.Controllers
 
             tester.LastAction = "Added new bug";
             tester.LastActionDate = DateTime.Now;
+
+            var project = context.Projects.Where(p => p.ProjectId == bug.ProjectId)
+                .FirstOrDefault();
+
+            if(!tester.Projects.Any(p => p.ProjectId == project.ProjectId))
+            {
+                tester.Projects.Add(project);
+            }
+
             context.SaveChanges();
 
             return View("BugAdded");

@@ -34,3 +34,4 @@ E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\B
 E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Tests\obj\Debug\BugTracker.Tests.pdb
 E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Tests\bin\Debug\BugTracker.Models.dll
 E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Tests\bin\Debug\BugTracker.Models.pdb
+E:\Documents\Telerik-School-Academy\Meeting-24-ASP.NET MVC\Homework\BugTracker\BugTracker.Tests\bin\Debug\Kendo.Mvc.dll

@@ -8,6 +8,12 @@ namespace BugTracker.Models
 {
     public class Tester
     {
+        public Tester()
+        {
+            this.Bugs = new HashSet<Bug>();
+            this.Projects = new HashSet<Project>();
+        }
+        
         public int TesterId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -18,6 +24,7 @@ namespace BugTracker.Models
         public string LastAction { get; set; }
         public DateTime? LastActionDate { get; set; }
 
-        public IEnumerable<Bug> Bugs { get; set; }
+        public ICollection<Bug> Bugs { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

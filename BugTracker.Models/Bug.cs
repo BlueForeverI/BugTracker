@@ -26,7 +26,7 @@ namespace BugTracker.Models
     {
         public int BugId { get; set; }
         public DateTime DateFound { get; set; }
-        public int OwnerId { get; set; }
+        public int TesterId { get; set; }
         public string Description { get; set; }
         public BugPriority Priority { get; set; }
         public int ProjectId { get; set; }

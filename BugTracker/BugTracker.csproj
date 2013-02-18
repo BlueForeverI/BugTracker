@@ -327,6 +327,8 @@
     <Content Include="Views\Tester\ViewBugs.cshtml" />
     <Content Include="Views\References\Index.cshtml" />
     <Content Include="Views\References\ShowTesters.cshtml" />
+    <Content Include="Views\References\ShowBugs.cshtml" />
+    <Content Include="Views\References\ShowBugsByProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

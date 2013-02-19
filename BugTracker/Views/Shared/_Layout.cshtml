@@ -15,50 +15,51 @@
         <script src="@Url.Content("~/Scripts/kendo/kendo.aspnetmvc.min.js")"></script> 
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <h1>BugTracker</h1>
-            </div>
-        </header>
-        @if (WebSecurity.IsAuthenticated)
-        {
-            <p>Welcome, <b>@WebSecurity.CurrentUserName</b></p>
-        }
-        <nav>
-            <ul>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                @if (WebMatrix.WebData.WebSecurity.IsAuthenticated)
-                {
-                    <li>@Html.ActionLink("Logout", "Logout", "Account")</li>   
-                    <li>@Html.ActionLink("References", "Index", "References")</li>
-                    
-                    if(System.Web.Security.Roles.IsUserInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Manage Bugs", "Index", "Tester")</li>
-                    }
-                }
-            </ul>
-        </nav>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - BugTracker</p>
+        <div id="mainWrapper">
+            <header>
+                <div class="content-wrapper">
+                    <h1>BugTracker</h1>
                 </div>
+            </header>
+            <div id="user">
+                @if (WebSecurity.IsAuthenticated)
+                {
+                    <p>Welcome, <em>@WebSecurity.CurrentUserName</em></p>
+                }
             </div>
-        </footer>
-
-@*        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)*@
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    @if (WebMatrix.WebData.WebSecurity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>   
+                        <li>@Html.ActionLink("References", "Index", "References")</li>
+                    
+                        if(System.Web.Security.Roles.IsUserInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Manage Bugs", "Index", "Tester")</li>
+                        }
+                    }
+                </ul>
+            </nav>
+            <div id="body">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+            <footer>
+                <div class="content-wrapper">
+                    <div class="float-left">
+                        <p>&copy; @DateTime.Now.Year - BugTracker</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

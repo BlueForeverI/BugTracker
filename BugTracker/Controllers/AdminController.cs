@@ -246,10 +246,6 @@ namespace BugTracker.Controllers
             {
                 errors.Add("The project name should not be empty");
             }
-            else if (context.Projects.Any(p => p.Name == project.Name))
-            {
-                errors.Add("Project already exists");
-            }
 
             if (string.IsNullOrEmpty(project.Description) || string.IsNullOrWhiteSpace(project.Description))
             {
